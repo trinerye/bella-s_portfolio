@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio – Contact</title>
+<meta name="description" content="Get in touch with [Your Name] about projects, collaborations and sponsorships.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-contact">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="logo" href="index.html" aria-label="Home">yn</a>
+  <nav class="main-nav" aria-label="Main">
+    <a href="index.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a href="#">Other</a>
+  </nav>
+</header>
+<main id="main">
+<section class="section section--first">
+  <h1 class="section-title">Say Hello</h1>
+  <div class="two-col contact-grid">
+    <div class="contact-copy">
+      <p>Looking to start a new project or just want to say hi? Send me an email and I’ll do my best to reply within 24 hrs!</p>
+      <p>If contact forms aren’t your thing… send me an email at <a href="mailto:hello@example.com">[your@email.com]</a></p>
+    </div>
+    <form class="form" data-contact-form>
+      <div class="field">
+        <label for="c-first">Name *</label>
+        <div class="field-row">
+          <input class="input" id="c-first" name="first" type="text" placeholder="First Name" autocomplete="given-name" required>
+          <input class="input" name="last" type="text" aria-label="Last name" placeholder="Last Name" autocomplete="family-name" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="c-inq">Inquiry *</label>
+          <div class="select-wrap">
+            <select class="input" id="c-inq" name="inquiry" required>
+              <option>Collab/Client</option>
+              <option>Sponsorship</option>
+              <option>Other</option>
+            </select>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6l5 5 5-5"/></svg>
+          </div>
+        </div>
+        <div class="field">
+          <label for="c-email">Email *</label>
+          <input class="input" id="c-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="c-msg">Message *</label>
+        <textarea class="input" id="c-msg" name="message" placeholder="Hello…" required></textarea>
+      </div>
+      <button class="btn" type="submit">Send</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="section section--testimonials">
+  <h2 class="section-title">What Clients Say</h2>
+  <div class="testimonials" data-testimonials>
+    <button class="circle-btn" type="button" data-prev aria-label="Previous testimonial"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+    <figure class="testimonial" aria-live="polite">
+      <blockquote data-quote>“[A short quote from a happy client about working with you.]”</blockquote>
+      <figcaption>
+        <span class="testimonial__dash" aria-hidden="true"></span>
+        <span class="testimonial__who"><span data-name>[Client name]</span><em data-role>[Role, Company]</em></span>
+      </figcaption>
+    </figure>
+    <button class="circle-btn" type="button" data-next aria-label="Next testimonial"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+  </div>
+</section>
+
+<section class="section">
+  <div class="blogs">
+    <h2>Recent Blogs</h2>
+    <div class="blogs__grid">
+      <article class="blog">
+        <h3>[Blog post title]</h3>
+        <div class="blog__date">[DD.MM.YY]</div>
+        <a href="#">See Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
+      </article>
+      <article class="blog">
+        <h3>[Blog post title]</h3>
+        <div class="blog__date">[DD.MM.YY]</div>
+        <a href="#">See Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
+      </article>
+      <article class="blog">
+        <h3>[Blog post title]</h3>
+        <div class="blog__date">[DD.MM.YY]</div>
+        <a href="#">See Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="zigzag" aria-hidden="true"></div>
+<section class="newsletter">
+  <h2>Join the Newsletter!</h2>
+  <p>You’ll receive an email every once in a while about new products, courses, and videos!</p>
+  <form class="newsletter__form" data-newsletter>
+    <input class="input" type="email" name="email" aria-label="Email address" placeholder="name@example.com" autocomplete="email" required>
+    <button class="newsletter__submit" type="submit" aria-label="Subscribe"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></button>
+  </form>
+  <p class="form-status" role="status" aria-live="polite"></p>
+  <p class="newsletter__fine">We’ll never share your details. See our <a href="rights.html#privacy">Privacy Policy</a></p>
+</section>
+</main>
+<footer class="site-footer">
+  <a class="logo" href="index.html" aria-label="Home">yn</a>
+  <div class="copyright">© <span data-year>2026</span> [Your Name]. <a href="rights.html">All rights reserved.</a></div>
+  <nav class="social" aria-label="Social">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Dribbble</a>
+  </nav>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
