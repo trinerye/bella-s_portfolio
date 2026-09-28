@@ -54,12 +54,11 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   gap: 16px;
 }
 
-.logo {
-  display: flex; align-items: center; justify-content: center;
-  width: 72px; height: 38px; flex-shrink: 0;
-  border: var(--rule); border-radius: 50%;
+/* Name wordmark used as the header logo; same type style as the former hero name */
+.wordmark {
+  flex-shrink: 0; white-space: nowrap;
   color: var(--ink); text-decoration: none;
-  font-size: 22px; letter-spacing: -0.5px;
+  font-size: 22px; font-weight: 800; letter-spacing: -0.035em; text-transform: uppercase;
 }
 
 .main-nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -74,6 +73,7 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
 /* ---------- Sections ---------- */
 .section { padding: 0 var(--gutter) 140px; }
 .section--first { padding-top: 40px; }
+.section--projects { padding-top: 140px; }
 
 .section-title {
   margin: 0;
@@ -83,6 +83,7 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   font-weight: 400;
   letter-spacing: -0.8px;
 }
+.section-title--small { font-size: 24px; letter-spacing: -0.2px; }
 
 .two-col {
   padding-top: 56px;
@@ -116,30 +117,34 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   cursor: pointer;
 }
 .circle-btn:hover { background: var(--ink); color: var(--bg); }
+.circle-btn:disabled,
+.circle-btn:disabled:hover {
+  background: transparent; color: #b5b5b5;
+  border-style: dashed; border-color: #b5b5b5;
+  cursor: default;
+}
+
+/* Hover tooltip; replaces the native title tooltip, which can't be styled */
+[data-tooltip] { position: relative; }
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute; bottom: calc(100% + 10px); right: 0;
+  padding: 6px 10px; background: var(--ink); color: #fff;
+  font-size: 14px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .15s ease;
+}
+[data-tooltip]:hover::after { opacity: 1; }
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 40px var(--gutter) 140px;
-  display: flex; align-items: center; justify-content: space-between; gap: 64px;
+  display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 64px;
 }
-.hero__intro { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
-.hero__name {
-  margin: 0;
-  font-size: clamp(56px, 7.4vw, 132px); line-height: .88; font-weight: 800;
-  letter-spacing: -0.035em; text-transform: uppercase;
-}
-.hero__name span { display: block; }
-.hero__meta {
-  display: flex; justify-content: space-between; gap: 32px;
-  font-size: 15px; line-height: 1.35; color: var(--ink-soft);
-}
-.hero__meta p { margin: 0; max-width: 340px; }
-.hero__meta-right { text-align: right; flex-shrink: 0; }
 
 /* Collage: a macOS Notes window with photos around it. Sized in cqi so it scales as one piece. */
 .collage {
   position: relative; container-type: inline-size;
-  width: 620px; max-width: 50%; aspect-ratio: 1024 / 560; flex-shrink: 0;
+  /* 1366px = the original 1024px scaled by 1.3341; may extend into the page gutters */
+  width: min(1366px, calc(100vw - 48px)); align-self: center; aspect-ratio: 1024 / 560;
   background-image: radial-gradient(circle, #9a9a9a 1px, transparent 1.5px);
   background-size: 20% 25%; background-position: 2.5% 12%;
 }
@@ -159,11 +164,9 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   padding: 1cqi 1.2cqi; background: #ec8aa9;
   font-size: 2.2cqi; line-height: 1.15; color: #111; white-space: nowrap; overflow: hidden;
 }
-.collage__star { right: 1%; top: 52%; width: 14.5%; z-index: 4; filter: drop-shadow(0 .4cqi .6cqi rgba(0,0,0,.25)); }
 
 .notes-window {
-  left: 21%; top: 16%; width: 58%; height: 66%; z-index: 2;
-  display: grid; grid-template-columns: 15% 20% 1fr;
+  left: 21%; top: 10.6%; width: 58%; height: 66%; z-index: 2;  display: grid; grid-template-columns: 15% 20% 1fr;
   background: #fff; border-radius: 1.2cqi; overflow: hidden;
   box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 1.6cqi 4cqi rgba(0,0,0,.18);
   font-size: 1.05cqi; color: #3a3a3a;
@@ -192,7 +195,27 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
 }
 .project { flex: 1 1 0; display: flex; flex-direction: column; gap: 14px; }
 .project__name { font-size: 18px; }
-.project .placeholder { height: 500px; }
+.project__card { position: relative; height: 500px; overflow: hidden; }
+.project__card:focus-visible { outline-offset: 4px; }
+.project__image { position: absolute; inset: 0; background: #dcdcdc; }
+/* Project details: hidden behind the image, fade in on hover or keyboard focus */
+.project__info {
+  position: absolute; inset: 0; padding: 32px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--card-color); color: var(--ink);
+  opacity: 0; transition: opacity .25s ease;
+}
+.project__card:hover .project__info,
+.project__card:focus-within .project__info { opacity: 1; }
+/* Same size as the [Project image] placeholder text, centred the same way */
+.project__desc { margin: 0; max-width: 30ch; font-size: 16px; line-height: 1.45; }
+.project__tag {
+  position: absolute; left: 32px; right: 32px; bottom: 32px; margin: 0; text-align: left;
+  font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+}
+.project__card--blue { --card-color: #b4caeb; }
+.project__card--yellow { --card-color: #f6d668; }
+.project__card--orange { --card-color: #f18c22; }
 .projects .circle-btn { width: 56px; height: 56px; }
 
 /* ---------- Content creation ---------- */
@@ -211,8 +234,8 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
 /* ---------- Services accordion ---------- */
 .about-text { display: flex; flex-direction: column; gap: 24px; font-size: 20px; line-height: 1.45; }
 .about-text p { margin: 0; }
-.services__label { font-size: 20px; padding-bottom: 12px; }
 .service { border-bottom: var(--rule); }
+.service:first-child { border-top: var(--rule); }
 .service__toggle {
   width: 100%; min-height: 56px; padding: 0;
   border: none; background: transparent; color: var(--ink);
@@ -239,8 +262,13 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   white-space: nowrap; font-size: 18px; padding-left: 40px;
   animation: marquee 40s linear infinite;
 }
-.tools:hover .tools__track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Tools strip inside the Projects section */
+.project-tools { margin-top: 28px; }
+.project-tools__label { margin: 0 0 24px; font-size: 16px; font-style: italic; color: var(--muted); opacity: .55; }
+/* Pull the strip out past the section's side padding so it runs edge to edge */
+.project-tools .tools { padding: 0; margin-inline: calc(-1 * var(--gutter)); }
 @media (prefers-reduced-motion: reduce) { .tools__track { animation: none; } }
 
 /* ---------- Testimonials ---------- */
@@ -306,6 +334,19 @@ textarea.input { height: 140px; padding: 10px 12px; resize: vertical; }
   display: inline-flex; align-items: center; gap: 12px; min-height: 28px;
 }
 
+/* ---------- Let's connect ---------- */
+.connect__lead { margin: 0; max-width: 520px; font-size: 20px; line-height: 1.45; }
+.connect__link {
+  display: flex; align-items: center; gap: 24px;
+  padding: 24px 0; border-top: var(--rule); border-bottom: var(--rule);
+  color: var(--ink); text-decoration: none;
+}
+.connect__text { flex-grow: 1; display: flex; flex-direction: column; gap: 6px; }
+.connect__label { font-size: 40px; letter-spacing: -0.8px; line-height: 1.1; }
+.connect__handle { font-size: 16px; color: var(--muted); }
+.connect__link:hover { color: var(--ink); }
+.connect__link:hover .circle-btn { background: var(--ink); color: var(--bg); }
+
 /* ---------- Newsletter ---------- */
 .zigzag {
   display: block; height: 14px;
@@ -337,6 +378,8 @@ textarea.input { height: 140px; padding: 10px 12px; resize: vertical; }
   display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
 }
 .copyright { font-size: 14px; color: var(--muted); }
+/* When nothing follows it (no social links), push the copyright to the right edge */
+.copyright:last-child { margin-left: auto; }
 .copyright a { color: var(--muted); text-underline-offset: 3px; }
 .copyright a:hover { color: var(--ink); }
 .social { margin-left: auto; display: flex; gap: 28px; font-size: 16px; flex-wrap: wrap; }
@@ -386,19 +429,22 @@ textarea.input { height: 140px; padding: 10px 12px; resize: vertical; }
   .main-nav a { font-size: 16px; padding: 6px 4px; }
   .section { padding-bottom: 96px; }
   .section-title { font-size: 32px; }
-  .hero { flex-direction: column; align-items: stretch; padding-bottom: 96px; gap: 40px; }
-  .hero__name { font-size: 15vw; }
-  .collage { width: 100%; max-width: none; }
+  .hero { gap: 40px; }
+  .section--projects { padding-top: 96px; }
+  .section-title--small { font-size: 20px; }
   .two-col, .field-row, .legal__layout { grid-template-columns: 1fr; gap: 48px; }
   .field-row { gap: 22px; }
   .projects { flex-direction: column; align-items: stretch; }
-  .project .placeholder { height: 360px; }
+  .project__card { height: 360px; }
+  .project__info { padding: 24px; }
+  .project__tag { left: 24px; right: 24px; bottom: 24px; }
   .projects .circle-btn { align-self: center; }
   .testimonials { padding-top: 56px; gap: 16px; }
   .testimonial blockquote { font-size: 22px; }
   .testimonial__who { font-size: 18px; }
   .circle-btn { width: 44px; height: 44px; }
   .contact-copy, .page-contact .contact-copy { font-size: 20px; }
+  .connect__label { font-size: 30px; }
   .blogs__grid { grid-template-columns: 1fr; }
   .blog { padding: 24px 0; }
   .blog + .blog { border-left: none; border-top: var(--rule); }
@@ -411,9 +457,9 @@ textarea.input { height: 140px; padding: 10px 12px; resize: vertical; }
 }
 
 @media (max-width: 480px) {
-  .site-header .logo { width: 56px; height: 32px; font-size: 18px; }
-  .main-nav { flex-wrap: nowrap; gap: 2px; }
+  /* Name and nav don't fit side by side on phones, so the nav drops below the name */
+  .site-header { flex-wrap: wrap; row-gap: 8px; }
+  .wordmark { font-size: 20px; }
+  .main-nav { flex-wrap: nowrap; gap: 2px; width: 100%; justify-content: flex-start; margin-left: -5px; }
   .main-nav a { font-size: 15px; padding: 6px 5px; }
-  .hero__meta { flex-direction: column; gap: 12px; }
-  .hero__meta-right { text-align: left; }
 }

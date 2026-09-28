@@ -13,24 +13,16 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="logo" href="index.html" aria-label="Home">yn</a>
+  <a class="wordmark" href="index.html">Isabella Rosing</a>
   <nav class="main-nav" aria-label="Main">
     <a href="index.html" aria-current="page">Work</a>
-    <a href="about.html">About</a>
+    <a href="#about">About</a>
     <a href="contact.html">Contact</a>
     <a href="#">Other</a>
   </nav>
 </header>
 <main id="main">
 <section class="hero">
-  <div class="hero__intro">
-    <h1 class="hero__name"><span>Bella</span> <span>Cipolla</span></h1>
-    <div class="hero__meta">
-      <p>I shape brands, interfaces, and the moments between, cook like there’s always someone on their way over, and have a soundtrack for every single moment.</p>
-      <p class="hero__meta-right">Sydney, Australia<br>Founder, creative, technologist</p>
-    </div>
-  </div>
-
   <div class="collage" role="img" aria-label="A notes window surrounded by personal photos">
     <div class="placeholder collage__item collage__photo collage__photo--tl">[Photo]</div>
     <p class="collage__item collage__quote">Do not postpone enjoyment. Any opportunity to enjoy life, take it.</p>
@@ -60,60 +52,64 @@
         <p class="notes-window__text">Hi, I’m Bella.<br>I shape brands, interfaces, and the moments between, cook like there’s always someone on their way over, and have a soundtrack for every single moment.</p>
       </div>
     </div>
-
-    <svg class="collage__item collage__star" viewBox="0 0 100 100" aria-hidden="true">
-      <defs><linearGradient id="star-foil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2f2f2"/><stop offset=".45" stop-color="#9a9a9a"/><stop offset=".7" stop-color="#e4e4e4"/><stop offset="1" stop-color="#7d7d7d"/></linearGradient></defs>
-      <path d="M50 3l11.8 32.6L96 36.4 68.8 57.6 78.6 92 50 72.2 21.4 92l9.8-34.4L4 36.4l34.2-.8z" fill="url(#star-foil)" stroke="#6f6f6f" stroke-width="1"/>
-    </svg>
   </div>
 </section>
 
-<section class="section">
-  <h2 class="section-title">Projects</h2>
+<section class="section section--projects">
+  <h2 class="section-title section-title--small">Projects</h2>
   <div class="projects">
     <article class="project">
-      <div class="project__name">01 [Project name]</div>
-      <div class="placeholder placeholder--dark project__image">[Project image]</div>
+      <div class="project__name">01 Rippl</div>
+      <div class="project__card project__card--blue" tabindex="0">
+        <div class="placeholder project__image">[Project image]</div>
+        <div class="project__info">
+          <p class="project__desc">Et casestudie af mit strategiske designprojekt som fokuserer på bæredygtige vandfremtider.</p>
+          <p class="project__tag">Strategisk design</p>
+        </div>
+      </div>
     </article>
     <article class="project">
-      <div class="project__name">02 [Project name]</div>
-      <div class="placeholder placeholder--dark project__image">[Project image]</div>
+      <div class="project__name">02 Help-on-phone</div>
+      <div class="project__card project__card--yellow" tabindex="0">
+        <div class="placeholder project__image">[Project image]</div>
+        <div class="project__info">
+          <p class="project__desc">[Short description of the project.]</p>
+          <p class="project__tag">[Category]</p>
+        </div>
+      </div>
     </article>
     <article class="project">
-      <div class="project__name">03 [Project name]</div>
-      <div class="placeholder placeholder--dark project__image">[Project image]</div>
+      <div class="project__name">03 Coming soon</div>
+      <div class="project__card project__card--orange" tabindex="0">
+        <div class="placeholder project__image">[Project image]</div>
+        <div class="project__info">
+          <p class="project__desc">[Short description of the project.]</p>
+          <p class="project__tag">[Category]</p>
+        </div>
+      </div>
     </article>
-    <a class="circle-btn" href="#" aria-label="More projects"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></a>
+    <button class="circle-btn" type="button" disabled aria-label="More projects – coming soon" data-tooltip="More projects coming soon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg></button>
+  </div>
+  <div class="project-tools">
+    <p class="project-tools__label" id="tools-label">These projects were made with</p>
+    <div class="tools" role="region" aria-labelledby="tools-label">
+    <div class="tools__track"><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span></div>
+    </div>
   </div>
 </section>
 
-<section class="section">
-  <h2 class="section-title">Content Creation</h2>
-  <div class="two-col">
-    <div class="stack" style="gap:48px">
-      <p class="lead">[Describe your channel, podcast or other content – what you share, who it’s for and why people should follow along.]</p>
-      <a class="arrow-link" href="contact.html">Get in contact about a sponsorship <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 2v7h8M9 6l3 3-3 3"/></svg></a>
-    </div>
-    <div class="video">
-      <div class="video__play"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4l9 6-9 6z"/></svg></div>
-      <div>[Video thumbnail]</div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="padding-bottom:100px">
-  <h2 class="section-title">About Me</h2>
+<section class="section" id="about" style="padding-bottom:100px">
+  <h2 class="section-title section-title--small">About Me</h2>
   <div class="two-col">
     <div class="about-text">
       <p>[A short introduction: what kind of designer you are, what you work on and who you work with.]</p>
       <p>[A second paragraph about what drives you – side projects, teaching, writing or whatever else you’re known for.]</p>
     </div>
     <div class="services">
-      <div class="services__label">Your one stop shop for:</div>
       <div class="service">
         <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-1">
           <span class="service__num">1</span>
-          <span class="service__title">[Service 1]</span>
+          <span class="service__title">My journey</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="service__chevron"><path d="M3 6l5 5 5-5"/></svg>
         </button>
         <p class="service__body" id="service-1">[Short description of what this service includes.] <em>Starting at [Price]</em></p>
@@ -121,7 +117,7 @@
       <div class="service">
         <button class="service__toggle" type="button" aria-expanded="false" aria-controls="service-2">
           <span class="service__num">2</span>
-          <span class="service__title">[Service 2]</span>
+          <span class="service__title">How I think</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="service__chevron"><path d="M3 6l5 5 5-5"/></svg>
         </button>
         <p class="service__body" id="service-2" hidden>[Short description of what this service includes.] <em>Starting at [Price]</em></p>
@@ -129,7 +125,7 @@
       <div class="service">
         <button class="service__toggle" type="button" aria-expanded="false" aria-controls="service-3">
           <span class="service__num">3</span>
-          <span class="service__title">[Service 3]</span>
+          <span class="service__title">What I bring to the table</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="service__chevron"><path d="M3 6l5 5 5-5"/></svg>
         </button>
         <p class="service__body" id="service-3" hidden>[Short description of what this service includes.] <em>Starting at [Price]</em></p>
@@ -138,110 +134,24 @@
   </div>
 </section>
 
-<div class="tools" aria-label="Tools I use">
-  <div class="tools__track"><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span><span>[Tool]</span><span aria-hidden="true">•</span></div>
-</div>
-
-<section class="section section--testimonials">
-  <h2 class="section-title">What Clients Say</h2>
-  <div class="testimonials" data-testimonials>
-    <button class="circle-btn" type="button" data-prev aria-label="Previous testimonial"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
-    <figure class="testimonial" aria-live="polite">
-      <blockquote data-quote>“[A short quote from a happy client about working with you.]”</blockquote>
-      <figcaption>
-        <span class="testimonial__dash" aria-hidden="true"></span>
-        <span class="testimonial__who"><span data-name>[Client name]</span><em data-role>[Role, Company]</em></span>
-      </figcaption>
-    </figure>
-    <button class="circle-btn" type="button" data-next aria-label="Next testimonial"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+<section class="section" id="connect">
+  <h2 class="section-title section-title--small">Let’s Connect</h2>
+  <div class="two-col">
+    <p class="connect__lead">Curious about my work, have a project in mind or just want to say hi? Let’s talk.</p>
+    <a class="connect__link" href="https://www.linkedin.com/in/irosing/" target="_blank" rel="noopener noreferrer">
+      <span class="connect__text">
+        <span class="connect__label">LinkedIn</span>
+        <span class="connect__handle">linkedin.com/in/irosing</span>
+      </span>
+      <span class="circle-btn" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 11L11 3M5 3h6v6"/></svg></span>
+      <span class="visually-hidden">(opens in a new tab)</span>
+    </a>
   </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">Say Hello</h2>
-  <div class="two-col contact-grid">
-    <div class="contact-copy">
-      <p>Looking to start a new project or just want to say hi? Send me an email and I’ll do my best to reply within 24 hrs!</p>
-      <p>If contact forms aren’t your thing… send me an email at <a href="mailto:hello@example.com">[your@email.com]</a></p>
-    </div>
-    <form class="form" data-contact-form>
-      <div class="field">
-        <label for="h-first">Name *</label>
-        <div class="field-row">
-          <input class="input" id="h-first" name="first" type="text" placeholder="First Name" autocomplete="given-name" required>
-          <input class="input" name="last" type="text" aria-label="Last name" placeholder="Last Name" autocomplete="family-name" required>
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label for="h-inq">Inquiry *</label>
-          <div class="select-wrap">
-            <select class="input" id="h-inq" name="inquiry" required>
-              <option>Collab/Client</option>
-              <option>Sponsorship</option>
-              <option>Other</option>
-            </select>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6l5 5 5-5"/></svg>
-          </div>
-        </div>
-        <div class="field">
-          <label for="h-email">Email *</label>
-          <input class="input" id="h-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        </div>
-      </div>
-      <div class="field">
-        <label for="h-msg">Message *</label>
-        <textarea class="input" id="h-msg" name="message" placeholder="Hello…" required></textarea>
-      </div>
-      <button class="btn" type="submit">Send</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-<section class="section">
-  <div class="blogs">
-    <h2>Recent Blogs</h2>
-    <div class="blogs__grid">
-      <article class="blog">
-        <h3>[Blog post title]</h3>
-        <div class="blog__date">[DD.MM.YY]</div>
-        <a href="#">See Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
-      </article>
-      <article class="blog">
-        <h3>[Blog post title]</h3>
-        <div class="blog__date">[DD.MM.YY]</div>
-        <a href="#">See Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
-      </article>
-      <article class="blog">
-        <h3>[Blog post title]</h3>
-        <div class="blog__date">[DD.MM.YY]</div>
-        <a href="#">See Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<div class="zigzag" aria-hidden="true"></div>
-<section class="newsletter">
-  <h2>Join the Newsletter!</h2>
-  <p>You’ll receive an email every once in a while about new products, courses, and videos!</p>
-  <form class="newsletter__form" data-newsletter>
-    <input class="input" type="email" name="email" aria-label="Email address" placeholder="name@example.com" autocomplete="email" required>
-    <button class="newsletter__submit" type="submit" aria-label="Subscribe"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></button>
-  </form>
-  <p class="form-status" role="status" aria-live="polite"></p>
-  <p class="newsletter__fine">We’ll never share your details. See our <a href="rights.html#privacy">Privacy Policy</a></p>
 </section>
 </main>
 <footer class="site-footer">
-  <a class="logo" href="index.html" aria-label="Home">yn</a>
+  <a class="wordmark" href="index.html">Isabella Rosing</a>
   <div class="copyright">© <span data-year>2026</span> [Your Name]. <a href="rights.html">All rights reserved.</a></div>
-  <nav class="social" aria-label="Social">
-    <a href="#">Instagram</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">Dribbble</a>
-  </nav>
 </footer>
 <script src="js/main.js"></script>
 </body>
