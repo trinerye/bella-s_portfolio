@@ -1,4 +1,4 @@
-// Shared behaviour for every page: testimonials carousel, services accordion,
+// Shared behaviour for every page: testimonials carousel, image carousels, services accordion,
 // contact form (opens the visitor's mail app) and newsletter sign-up.
 (function () {
   'use strict';
@@ -37,6 +37,47 @@
       render();
     });
     render();
+  });
+
+  // ---- About Me: line up the bottom of the dropdown column with the text ----
+  // The gap is measured only while every dropdown is closed and then kept fixed,
+  // so opening one never makes the items above it jump.
+  var about = document.getElementById('about');
+  var aboutText = about && about.querySelector('.about-text');
+  var aboutCol = about && about.querySelector('.services');
+  var skills = about && about.querySelector('.skill-groups');
+  if (aboutText && aboutCol && skills) {
+    var fitSkills = function () {
+      if (aboutCol.querySelector('[aria-expanded="true"], details[open]')) return;
+      skills.style.marginTop = '0px';
+      var sideBySide = Math.abs(aboutText.getBoundingClientRect().top - aboutCol.getBoundingClientRect().top) < 2;
+      var extra = aboutText.getBoundingClientRect().height - aboutCol.getBoundingClientRect().height;
+      skills.style.marginTop = sideBySide && extra > 0 ? extra + 'px' : '0px';
+    };
+    fitSkills();
+    window.addEventListener('resize', fitSkills);
+    if (document.fonts) document.fonts.ready.then(fitSkills);
+  }
+
+  // ---- Carousels: image and text slides change together ----
+  document.querySelectorAll('[data-carousel]').forEach(function (root) {
+    var images = root.querySelectorAll('.carousel__media [data-slide]');
+    var texts = root.querySelectorAll('.carousel__texts [data-slide]');
+    var current = root.querySelector('[data-carousel-current]');
+    var i = 0;
+    function show(n) {
+      i = (n + texts.length) % texts.length;
+      [images, texts].forEach(function (set) {
+        set.forEach(function (el, k) { el.classList.toggle('is-active', k === i); });
+      });
+      current.textContent = String(i + 1).padStart(2, '0');
+    }
+    root.querySelector('[data-carousel-prev]').addEventListener('click', function () { show(i - 1); });
+    root.querySelector('[data-carousel-next]').addEventListener('click', function () { show(i + 1); });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
   });
 
   // ---- Services accordion (one open at a time) ----

@@ -195,22 +195,23 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
 }
 .project { flex: 1 1 0; display: flex; flex-direction: column; gap: 14px; }
 .project__name { font-size: 18px; }
-.project__card { position: relative; height: 500px; overflow: hidden; }
+.project__card { position: relative; display: block; height: 500px; overflow: hidden; color: inherit; text-decoration: none; }
 .project__card:focus-visible { outline-offset: 4px; }
 .project__image { position: absolute; inset: 0; background: #dcdcdc; }
 /* Project details: hidden behind the image, fade in on hover or keyboard focus */
 .project__info {
   position: absolute; inset: 0; padding: 32px;
-  display: flex; align-items: center; justify-content: center; text-align: center;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left;
   background: var(--card-color); color: var(--ink);
   opacity: 0; transition: opacity .25s ease;
 }
 .project__card:hover .project__info,
 .project__card:focus-within .project__info { opacity: 1; }
 /* Same size as the [Project image] placeholder text, centred the same way */
+.project__title { margin: 0 0 8px; max-width: 32ch; font-size: 18px; font-weight: 700; line-height: 1.3; }
 .project__desc { margin: 0; max-width: 30ch; font-size: 16px; line-height: 1.45; }
 .project__tag {
-  position: absolute; left: 32px; right: 32px; bottom: 32px; margin: 0; text-align: left;
+  position: absolute; bottom: 32px; right: 32px; left: 32px; margin: 0; text-align: left;
   font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
 }
 .project__card--blue { --card-color: #b4caeb; }
@@ -231,11 +232,126 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   display: flex; align-items: center; justify-content: center;
 }
 
+/* ---------- Project (case study) pages ---------- */
+.case-hero { padding: 40px var(--gutter) 0; }
+.case-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 16px; color: var(--muted); text-decoration: none;
+}
+.case-back:hover { color: var(--ink); }
+.case-hero__num { margin: 56px 0 8px; font-size: 18px; display: flex; align-items: center; }
+.case-hero__title {
+  margin: 0;
+  font-size: clamp(56px, 9vw, 128px); line-height: .9; font-weight: 800;
+  letter-spacing: -0.035em; text-transform: uppercase;
+}
+/* The title links back to the front page; a "<" fades in to its left on hover */
+.case-hero__link { position: relative; display: block; color: inherit; text-decoration: none; }
+.case-hero__link:hover { color: inherit; }
+/* Small "<" in front of the project number, always visible, links to the front page */
+.case-hero__back { display: inline-flex; align-items: center; margin-right: 12px; color: var(--ink); }
+.case-hero__back:hover { color: var(--muted); }
+.case-hero__lead { margin: 32px 0 0; max-width: 640px; font-size: 22px; line-height: 1.4; }
+.case-meta {
+  margin: 56px 0 0; padding-top: 20px; border-top: var(--rule);
+  /* last column sizes to its content so a longer value (e.g. stakeholders) stays on one line */
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) max-content; gap: 24px;
+}
+.case-meta dt { font-size: 14px; color: var(--muted); }
+.case-meta dd { margin: 6px 0 0; font-size: 18px; }
+.case-cover { height: 640px; margin: 72px var(--gutter) 140px; color: var(--ink-soft); }
+.case-cover--blue { background: #b4caeb; }
+.case-cover--yellow { background: #f6d668; }
+.case-cover--orange { background: #f18c22; }
+.case-image { height: 520px; margin-top: 56px; background: #dcdcdc; }
+
+/* Process: organic timeline. Text above/below a wavy line, one dot per step.
+   Each step is a column spanning three shared rows (text / line / text) via subgrid. */
+.timeline {
+  --line-h: 160px;
+  position: relative; padding-top: 56px;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: auto var(--line-h) auto;
+}
+.timeline__line {
+  grid-column: 1 / -1; grid-row: 2; width: 100%; height: 100%; overflow: visible;
+  fill: none; stroke: var(--ink); stroke-width: 1.5;
+}
+.timeline__line path { vector-effect: non-scaling-stroke; }
+.timeline__steps { display: contents; }
+.timeline__step {
+  grid-column: var(--col); grid-row: 1 / 4;
+  display: grid; grid-template-rows: subgrid; position: relative;
+}
+.timeline__text { display: flex; flex-direction: column; gap: 6px; margin-left: calc(12% - 24px); padding-right: 24px; }
+.timeline__step--up .timeline__text { grid-row: 1; align-self: end; padding-bottom: 20px; }
+.timeline__step--down .timeline__text { grid-row: 3; align-self: start; padding-top: 20px; }
+.timeline__num { font-size: 14px; color: var(--muted); }
+.timeline__title { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.3; }
+.timeline__text p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--ink-soft); }
+/* the dot sits on the line: row 2, at the step's height on the curve */
+.timeline__dot {
+  grid-row: 2; justify-self: start; align-self: start; margin-left: calc(12% - 24px);
+  width: 48px; height: 48px; margin-top: calc(var(--y) * var(--line-h) - 24px);
+  display: flex; align-items: center; justify-content: center; color: var(--ink);
+  border-radius: 50%; border: var(--rule); background: var(--bg); position: relative; z-index: 1;
+}
+
+/* Larger accordion style, shared by the research findings and About Me; titles can wrap, so give them room */
+/* dropdown column takes 60% of the row */
+.two-col--wide-right { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+:is(.case-section, #about) .service__toggle { padding: 22px 0; gap: 18px; font-size: 20px; line-height: 1.4; }
+:is(.case-section, #about) .service__num { width: 30px; height: 30px; font-size: 14px; align-self: flex-start; margin-top: 1px; }
+:is(.case-section, #about) .service__body { padding: 0 0 28px 48px; font-size: 20px; line-height: 1.45; color: var(--muted); }
+
+/* Design: carousel – one image at a time, heading and text change with it */
+.carousel {
+  padding-top: 56px;
+  display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 64px; align-items: center;
+}
+/* slides are stacked in one grid cell, so the box keeps the height of the tallest slide */
+.carousel__media, .carousel__texts { display: grid; }
+.carousel__media > *, .carousel__texts > * { grid-area: 1 / 1; }
+.carousel__stage { position: relative; }
+.carousel__image { aspect-ratio: 16 / 10; background: #dcdcdc; }
+.carousel__image--brand { display: block; width: 100%; height: auto; background: #b4caeb; }
+/* arrows sit on the image, one on each side */
+.carousel__btn {
+  position: absolute; top: 50%; translate: 0 -50%; z-index: 1;
+  width: 48px; height: 48px; background: var(--bg);
+}
+.carousel__btn--prev { left: 20px; }
+.carousel__btn--next { right: 20px; }
+.carousel [data-slide] { opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s; }
+.carousel [data-slide].is-active { opacity: 1; visibility: visible; }
+.carousel__count { margin: 0 0 20px; font-size: 14px; color: var(--muted); }
+.carousel__text { display: flex; flex-direction: column; gap: 16px; font-size: 18px; line-height: 1.5; }
+.carousel__text p { margin: 0; }
+.carousel__title { margin: 0 0 4px; font-size: 24px; font-weight: 700; line-height: 1.3; }
+@media (prefers-reduced-motion: reduce) { .carousel [data-slide] { transition: none; } }
+
+/* Small bold subheadings (used in Reflection) */
+.case-sub__title { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.35; }
+
+/* Test: short section, so the key sentence is set large */
+.case-statement { margin: 56px 0 0; max-width: 900px; font-size: 32px; font-weight: 300; line-height: 1.3; letter-spacing: -0.4px; }
+
+/* Reflection: key takeaway as a pull quote */
+.case-quote { margin: 0; padding-left: 28px; border-left: var(--rule); align-self: center; }
+/* Outcome: the clickable Rippl' prototype (its own page in prototypes/rippl/, scales itself to the frame) */
+.case-prototype { margin: 0; justify-self: end; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 16px; }
+.case-prototype iframe { display: block; width: 100%; height: 800px; border: 0; }
+.case-prototype figcaption { font-size: 14px; color: var(--muted); text-align: left; }
+/* several text blocks stacked in one column */
+.case-stack { display: flex; flex-direction: column; gap: 48px; }
+.case-quote p { margin: 0; font-size: 32px; font-weight: 300; font-style: italic; line-height: 1.3; letter-spacing: -0.4px; }
+
 /* ---------- Services accordion ---------- */
 .about-text { display: flex; flex-direction: column; gap: 24px; font-size: 20px; line-height: 1.45; }
 .about-text p { margin: 0; }
+.about-text--bold { font-weight: 700; }
 .service { border-bottom: var(--rule); }
-.service:first-child { border-top: var(--rule); }
+.service:first-of-type { border-top: var(--rule); }
 .service__toggle {
   width: 100%; min-height: 56px; padding: 0;
   border: none; background: transparent; color: var(--ink);
@@ -254,6 +370,12 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
   margin: 0; padding: 0 0 20px 38px;
   font-size: 16px; line-height: 1.5; color: var(--ink-soft);
 }
+.service__body p { margin: 0; }
+.service__body > :not(:first-child) { margin-top: 14px; }
+/* How I think: phases as a small definition list */
+.about-phases { margin-bottom: 0; display: flex; flex-direction: column; gap: 14px; }
+.about-phases dt { font-weight: 700; color: var(--ink); }
+.about-phases dd { margin: 2px 0 0; }
 
 /* ---------- Tools marquee ---------- */
 .tools { overflow: hidden; padding: 0 0 130px; }
@@ -269,6 +391,26 @@ input::placeholder, textarea::placeholder { color: #8a8a8a; }
 .project-tools__label { margin: 0 0 24px; font-size: 16px; font-style: italic; color: var(--muted); opacity: .55; }
 /* Pull the strip out past the section's side padding so it runs edge to edge */
 .project-tools .tools { padding: 0; margin-inline: calc(-1 * var(--gutter)); }
+/* Skills under the About Me dropdowns: category dropdowns (native <details>) with outlined tags */
+/* About Me: at least 40px between the groups; main.js adds a fixed extra top margin (worked out
+   while everything is closed) so the column ends level with the text on the left, without anything
+   moving when a dropdown opens */
+.skill-groups { padding-top: 40px; }
+#about .service__toggle { padding-block: 18px; }
+.skill-group { border-bottom: var(--rule); }
+.skill-group:first-of-type { border-top: var(--rule); }
+/* small grey label above a dropdown list */
+.list-label { margin: 0 0 14px; font-size: 14px; font-weight: 400; color: var(--muted); }
+.skill-group summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 0; cursor: pointer; list-style: none;
+  font-size: 20px; line-height: 1.4; color: var(--ink);
+}
+.skill-group summary::-webkit-details-marker { display: none; }
+.skill-group__chevron { flex-shrink: 0; color: var(--ink); transition: transform .2s ease; }
+.skill-group[open] .skill-group__chevron { transform: rotate(180deg); }
+.skill-chips { margin: 0; padding: 0 0 24px; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-chips li { padding: 7px 16px; border: 1px solid var(--ink); border-radius: 999px; font-size: 16px; line-height: 1.3; }
 @media (prefers-reduced-motion: reduce) { .tools__track { animation: none; } }
 
 /* ---------- Testimonials ---------- */
@@ -417,6 +559,14 @@ textarea.input { height: 140px; padding: 10px 12px; resize: vertical; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
+  /* timeline turns vertical: a line down the left with the steps in order */
+  .timeline { display: block; padding-top: 48px; }
+  .timeline__line { display: none; }
+  .timeline__steps { display: flex; flex-direction: column; gap: 36px; position: relative; margin: 0; padding: 0 0 0 64px; list-style: none; }
+  .timeline__steps::before { content: ""; position: absolute; left: 21px; top: 20px; bottom: 20px; width: 1.5px; background: var(--ink); }
+  .timeline__step { display: block; padding: 0; }
+  .timeline__step--up .timeline__text, .timeline__step--down .timeline__text { padding: 0; margin: 0; }
+  .timeline__dot { position: absolute; left: -64px; top: -4px; margin: 0; width: 44px; height: 44px; }
   :root { --gutter: 48px; }
   .testimonials { padding: 80px 0 0; }
   .clients { font-size: 44px; }
@@ -437,7 +587,24 @@ textarea.input { height: 140px; padding: 10px 12px; resize: vertical; }
   .projects { flex-direction: column; align-items: stretch; }
   .project__card { height: 360px; }
   .project__info { padding: 24px; }
-  .project__tag { left: 24px; right: 24px; bottom: 24px; }
+  .project__tag { bottom: 24px; right: 24px; left: 24px; }
+  .case-hero__num { margin-top: 40px; }
+  .case-hero__lead { font-size: 18px; }
+  .case-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-cover { height: 360px; margin-top: 48px; margin-bottom: 96px; }
+  .case-image { height: 300px; margin-top: 40px; }
+  .case-section .two-col > div:empty { display: none; }
+  .carousel { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; }
+  .carousel__title { font-size: 20px; }
+  .carousel__text { font-size: 16px; }
+  .carousel__btn { width: 40px; height: 40px; }
+  .carousel__btn--prev { left: 12px; }
+  .carousel__btn--next { right: 12px; }
+  :is(.case-section, #about) .service__toggle { font-size: 20px; padding: 18px 0; }
+  :is(.case-section, #about) .service__body { padding-left: 48px; font-size: 16px; }
+  .case-statement, .case-quote p { font-size: 24px; }
+  .case-quote { padding-left: 20px; }
+  .case-prototype iframe { height: 760px; }
   .projects .circle-btn { align-self: center; }
   .testimonials { padding-top: 56px; gap: 16px; }
   .testimonial blockquote { font-size: 22px; }

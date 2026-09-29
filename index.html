@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of [Your Name], a [role] based in [City].">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,800;1,300;1,400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400&amp;display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -55,38 +55,40 @@
   </div>
 </section>
 
-<section class="section section--projects">
+<section class="section section--projects" id="projects">
   <h2 class="section-title section-title--small">Projects</h2>
   <div class="projects">
     <article class="project">
       <div class="project__name">01 Rippl</div>
-      <div class="project__card project__card--blue" tabindex="0">
+      <a class="project__card project__card--blue" href="rippl.html" aria-label="Rippl – view project">
         <div class="placeholder project__image">[Project image]</div>
         <div class="project__info">
-          <p class="project__desc">Et casestudie af mit strategiske designprojekt som fokuserer på bæredygtige vandfremtider.</p>
+          <h3 class="project__title">Rainwater as a shared resource</h3>
+          <p class="project__desc">A non-profit concept that makes rainwater reuse accessible to apartment residents</p>
           <p class="project__tag">Strategisk design</p>
         </div>
-      </div>
+      </a>
     </article>
     <article class="project">
       <div class="project__name">02 Help-on-phone</div>
-      <div class="project__card project__card--yellow" tabindex="0">
+      <a class="project__card project__card--yellow" href="help-on-phone.html" aria-label="Help-on-phone – view project">
         <div class="placeholder project__image">[Project image]</div>
         <div class="project__info">
-          <p class="project__desc">[Short description of the project.]</p>
-          <p class="project__tag">[Category]</p>
+          <h3 class="project__title">From towing cars to phonefixes</h3>
+          <p class="project__desc">A tool inside SOS International’s case system that helps operators guide stranded drivers over the phone, so fewer breakdowns need a tow truck.</p>
+          <p class="project__tag">Service design</p>
         </div>
-      </div>
+      </a>
     </article>
     <article class="project">
       <div class="project__name">03 Coming soon</div>
-      <div class="project__card project__card--orange" tabindex="0">
+      <a class="project__card project__card--orange" href="coming-soon.html" aria-label="Coming soon – view project">
         <div class="placeholder project__image">[Project image]</div>
         <div class="project__info">
           <p class="project__desc">[Short description of the project.]</p>
           <p class="project__tag">[Category]</p>
         </div>
-      </div>
+      </a>
     </article>
     <button class="circle-btn" type="button" disabled aria-label="More projects – coming soon" data-tooltip="More projects coming soon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg></button>
   </div>
@@ -102,17 +104,24 @@
   <h2 class="section-title section-title--small">About Me</h2>
   <div class="two-col">
     <div class="about-text">
-      <p>[A short introduction: what kind of designer you are, what you work on and who you work with.]</p>
-      <p>[A second paragraph about what drives you – side projects, teaching, writing or whatever else you’re known for.]</p>
+      <p>I’ve been curious about technology for as long as I can remember, from getting lost in MS Paint on the family computer as a kid, to picking up Photoshop at ten, to teaching myself to code a website as a teen just to see if I could. That curiosity followed me into a degree in Digital Design at Aarhus University, and somewhere along the way it turned into something more specific: an interest in how technology shapes the people who use it, and what a piece of technology reveals about the people, and the moment, that made it.</p>
+      <p>Day to day, that curiosity turns into UX work: user interviews, workshops and hands-on prototyping. I like being in the room, running a workshop or watching someone use a prototype for the first time, because that’s where the real insight tends to show up. UI is how I make those insights visible. Every choice in an interface, from hierarchy and spacing to color and type, should help people understand what to do next, and I love turning research into clean, considered screens and design systems developers can build from.</p>
+      <p>I like working in a team with room for both deep focus and a good laugh. I share what I know, and I’m just as happy to learn something new.</p>
     </div>
     <div class="services">
+      <h3 class="list-label">Get to know me</h3>
       <div class="service">
-        <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-1">
+        <button class="service__toggle" type="button" aria-expanded="false" aria-controls="service-1">
           <span class="service__num">1</span>
           <span class="service__title">My journey</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="service__chevron"><path d="M3 6l5 5 5-5"/></svg>
         </button>
-        <p class="service__body" id="service-1">[Short description of what this service includes.] <em>Starting at [Price]</em></p>
+        <div class="service__body" id="service-1" hidden>
+          <p>It started in Kolding, where a foundation year at Design Culture taught me that everything we make says something about the people behind it and the people who use it. From there I moved to Aarhus to study digital design, and quickly learned to work in sprints, test early, and let users prove me wrong.</p>
+          <p>Along the way I worked with SOS International, Grundfos and Aarhus Vand, and helped create a VR game based on P.S. Krøyer’s painting <em>Skagensjægerne</em>, exhibited at ARoS. In my bachelor’s thesis, I interviewed 11 designers about how they use AI tools in their work. In my master’s thesis, I reviewed 15 studies on how people form social relationships with AI companions.</p>
+          <p>Alongside my studies, I co-founded KINDA, a startup helping adults form real friendships, and went through Kitchen AU’s intern in own startup programme. That taught me to pitch, sell an idea, and take business models as seriously as user needs.</p>
+          <p>My path hasn’t been a straight line, and I’m glad it hasn’t. In retail and floristry, I managed scheduling for the whole team, onboarded new staff, and trained colleagues in the system we used for live sales, so I’ve seen up close how tools either help people or get in their way. At Tricon I learned precision from the other side, turning technical drawings into tested products on tight deadlines. I bring both into how I run a project today.</p>
+        </div>
       </div>
       <div class="service">
         <button class="service__toggle" type="button" aria-expanded="false" aria-controls="service-2">
@@ -120,15 +129,67 @@
           <span class="service__title">How I think</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="service__chevron"><path d="M3 6l5 5 5-5"/></svg>
         </button>
-        <p class="service__body" id="service-2" hidden>[Short description of what this service includes.] <em>Starting at [Price]</em></p>
+        <div class="service__body" id="service-2" hidden>
+          <p>Before I open Figma, I want to know who this is really for, what they’re trying to get done, and where the current experience gets in their way.</p>
+          <dl class="about-phases">
+            <div><dt>Discover</dt><dd>User interviews, surveys, competitor analysis, desk research, thematic analysis</dd></div>
+            <div><dt>Define &amp; Ideate</dt><dd>Workshop facilitation, co-design, journey mapping, business model canvas, value proposition design</dd></div>
+            <div><dt>Design &amp; Prototype</dt><dd>UI and visual design, Figma design systems, Framer, service design, iterative prototyping</dd></div>
+            <div><dt>Test &amp; Refine</dt><dd>Usability testing, feedback synthesis, iteration</dd></div>
+            <div><dt>Tools</dt><dd>Figma · Framer · Adobe Creative Suite · Canva · Basic HTML/CSS/JS</dd></div>
+            <div><dt>A Grounded Take on AI</dt><dd>My bachelor’s and master’s theses both explored AI, which gave me a research-based sense of where AI genuinely strengthens a design process, and where it doesn’t.</dd></div>
+          </dl>
+        </div>
       </div>
       <div class="service">
         <button class="service__toggle" type="button" aria-expanded="false" aria-controls="service-3">
           <span class="service__num">3</span>
-          <span class="service__title">What I bring to the table</span>
+          <span class="service__title">Outside of work</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="service__chevron"><path d="M3 6l5 5 5-5"/></svg>
         </button>
-        <p class="service__body" id="service-3" hidden>[Short description of what this service includes.] <em>Starting at [Price]</em></p>
+        <div class="service__body" id="service-3" hidden>
+          <p>When I’m not designing, I usually have a camera or a guitar in my hands. I also make ceramics, knit, and get out into nature whenever I can. Working with my hands keeps my eye for shape, texture and color sharp.</p>
+          <p>I’m fascinated by the history of technology, and by tech that’s used in artistic ways. I’m part of the Tamagotchi generation, and one day I’d love to design small, playful gadgets in that same spirit. Having turned technical drawings into tested products at Tricon, I know what it takes to get an idea from paper to something that actually works.</p>
+        </div>
+      </div>
+      <div class="skill-groups">
+        <h3 class="list-label">My skills</h3>
+        <details class="skill-group">
+          <summary>Research &amp; insight<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="skill-group__chevron"><path d="M3 6l5 5 5-5"/></svg></summary>
+          <ul class="skill-chips">
+            <li>User research</li>
+            <li>Workshops</li>
+            <li>Usability testing</li>
+            <li>Thematic analysis</li>
+          </ul>
+        </details>
+        <details class="skill-group">
+          <summary>Design &amp; prototyping<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="skill-group__chevron"><path d="M3 6l5 5 5-5"/></svg></summary>
+          <ul class="skill-chips">
+            <li>Wireframing</li>
+            <li>Prototyping</li>
+            <li>Interaction design</li>
+            <li>Figma design systems</li>
+            <li>Designing with AI</li>
+          </ul>
+        </details>
+        <details class="skill-group">
+          <summary>Brand &amp; visual<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="skill-group__chevron"><path d="M3 6l5 5 5-5"/></svg></summary>
+          <ul class="skill-chips">
+            <li>Visual identity</li>
+            <li>Branding</li>
+          </ul>
+        </details>
+        <details class="skill-group">
+          <summary>Tools<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="skill-group__chevron"><path d="M3 6l5 5 5-5"/></svg></summary>
+          <ul class="skill-chips">
+            <li>Figma</li>
+            <li>Framer</li>
+            <li>Adobe Creative Suite</li>
+            <li>Canva</li>
+            <li>Basic HTML/CSS/JS</li>
+          </ul>
+        </details>
       </div>
     </div>
   </div>
